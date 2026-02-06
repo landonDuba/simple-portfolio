@@ -1,0 +1,12 @@
+.box img {
+ width: clamp(60px, 12vw, 130px);
+ border-radius: 10%;
+ height: 10vh;
+ width: 10vw;
+ padding-right: 10px;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+}

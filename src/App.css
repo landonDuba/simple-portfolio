@@ -10,6 +10,16 @@
     --ptwo: grey;
 }
 
+.Header {
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
 body {
     background-color: var(--pbg);
 }
@@ -29,7 +39,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     color: var(--ptxt);
-    padding-top: 200px;
+    padding-top: 100px;
 }
 
 
@@ -44,7 +54,10 @@ body {
 
 button {
     margin-bottom: 20px;
-    background-color: red;
+    color: var(--ptxt);
+    background-color: transparent;
+    border: 0px solid black;
+    font-size: 50px;
 }
 
 .desc {

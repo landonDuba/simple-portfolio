@@ -1,7 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaMoon } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { Experience } from './Experience';
 
 function App() {
   const [theme, setTheme] = useState(0);
@@ -14,9 +15,17 @@ function App() {
     document.body.setAttribute('data-theme', theme);
   }, [theme]);
 
+  const exps = [
+    {img: 'https://newsroom.ibm.com/image/IBM+Logo_Social.jpg', name: "IBM", title: 'Software Engineer Intern'}
+  ]
+
   return (
     <div className="App">
-      <button onClick={toggleTheme}>light mode</button>
+      <div className='Header'>
+        <button onClick={toggleTheme}>
+          <FaMoon></FaMoon>
+        </button>
+      </div>
       <div className="About">
           <span className='pfp'><img src="/pfp.jpg" alt="face"></img></span>
           <h2>Hi, I'm Landon</h2>
@@ -41,6 +50,7 @@ function App() {
       </div>
       <div className='Experiences'>
         <h1>Experiences</h1>
+        <Experience exp={exps[0]}></Experience>
       </div>
     </div>
   );
