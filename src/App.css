@@ -23,7 +23,7 @@ html, body, #root {
 
 
 :root {
-    --pbg: black;
+    --pbg: #1a1a1a;
     --ptxt: white;
     --ptwo: grey;
 }
@@ -46,7 +46,7 @@ html, body, #root {
 
 body {
     font-family: 'IBM Plex Mono', monospace;
-    background-color: var(--pbg);
+    background-color: #1a1a1a;
 }
 
 
