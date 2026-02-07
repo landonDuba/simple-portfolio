@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
+html, body, #root {
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+
 :root {
     --pbg: black;
     --ptxt: white;
@@ -28,7 +35,7 @@ body {
 }
 
 .App {
-    min-height: 100vh;
+    min-height: 100dvh;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
