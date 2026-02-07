@@ -7,12 +7,20 @@ export function BackgroundAnimation() {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+
+        function resizeCanvas() {
+            // Use the visualViewport height if available (accounts for Safari bottom bar)
+            const height = window.visualViewport?.height || window.innerHeight;
+            canvas.width = window.innerWidth;
+            canvas.height = height;
+        }
+
+        resizeCanvas(); // initial size
+        window.addEventListener('resize', resizeCanvas);
+        window.visualViewport?.addEventListener('resize', resizeCanvas);
 
         let time = 0;
 
-        // Perlin-like noise with multiple octaves
         function noise(x, y) {
             return (
                 Math.sin(x * 0.002 + time * 0.3) * Math.cos(y * 0.002 + time * 0.2) +
@@ -30,7 +38,6 @@ export function BackgroundAnimation() {
 
             for (let i = 1; i <= numLines; i++) {
                 const baseY = step * i;
-                
                 ctx.strokeStyle = `rgba(120, 120, 120, ${0.6 - Math.abs(i - numLines/2) * 0.04})`;
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
@@ -38,14 +45,8 @@ export function BackgroundAnimation() {
                 for (let x = 0; x <= canvas.width; x += 3) {
                     const offset = noise(x, baseY) * 30;
                     const y = baseY + offset;
-                    
-                    if (x === 0) {
-                        ctx.moveTo(x, y);
-                    } else {
-                        ctx.lineTo(x, y);
-                    }
+                    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
                 }
-
                 ctx.stroke();
             }
 
@@ -55,13 +56,10 @@ export function BackgroundAnimation() {
 
         drawTopography();
 
-        const handleResize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        return () => {
+            window.removeEventListener('resize', resizeCanvas);
+            window.visualViewport?.removeEventListener('resize', resizeCanvas);
         };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return <canvas ref={canvasRef} className="background-canvas" />;
