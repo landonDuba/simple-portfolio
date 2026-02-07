@@ -54,3 +54,9 @@
     flex-shrink: 0;
     margin-left: auto;
 }
+
+@media (max-width: 768px) {
+  .date {
+    display: none;
+  }
+}
