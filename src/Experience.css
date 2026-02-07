@@ -30,23 +30,30 @@
 .info h3 {
     margin: 0;
     padding: 0;
-    text-decoration: underline;
-    text-underline-offset: 5px;
     transition: 0.5s ease;
     width: 150px;
     flex-shrink: 0;
+    transition: 0.5s ease;
 }
+
+.lines h3 {
+  text-decoration: underline;
+  text-decoration-color: var(--underline-color);
+  text-underline-offset: 5px;
+  transition: 0.2s ease;
+}
+
+.lines:hover h3 {
+  text-decoration-color: white;
+  text-underline-offset: 10px;
+}
+
 
 .info h5 {
     margin: 0;
     padding: 0;
     font-size: clamp(14px, 2.5vw, 15px);
     flex: 1;
-}
-
-.info h3:hover {
-    text-decoration: underline;
-    text-underline-offset: 10px;
 }
 
 .date {

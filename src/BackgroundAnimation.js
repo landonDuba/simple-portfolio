@@ -10,51 +10,46 @@ export function BackgroundAnimation() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // Noise function for organic terrain
-        const noise = (x, y, time) => {
-            const scale = 0.003;
-            return Math.sin(x * scale + time * 0.0002) * 
-                   Math.cos(y * scale + time * 0.0003) * 
-                   Math.sin((x + y) * scale * 0.5 + time * 0.0001) * 150;
-        };
-
         let time = 0;
+
+        // Perlin-like noise with multiple octaves
+        function noise(x, y) {
+            return (
+                Math.sin(x * 0.002 + time * 0.3) * Math.cos(y * 0.002 + time * 0.2) +
+                Math.sin(x * 0.004 + time * 0.5) * Math.cos(y * 0.004 - time * 0.3) * 0.5 +
+                Math.sin(x * 0.001 + time * 0.15) * Math.cos(y * 0.001 + time * 0.25) * 2
+            );
+        }
 
         function drawTopography() {
             ctx.fillStyle = '#1a1a1a';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            const spacing = 40; // Distance between contour lines
-            const levels = 15; // Number of elevation levels
+            const numLines = 12;
+            const step = canvas.height / (numLines + 1);
 
-            ctx.strokeStyle = 'rgba(80, 80, 80, 0.3)';
-            ctx.lineWidth = 1.5;
-
-            for (let level = 0; level < levels; level++) {
-                const elevation = level * spacing;
+            for (let i = 1; i <= numLines; i++) {
+                const baseY = step * i;
                 
+                ctx.strokeStyle = `rgba(120, 120, 120, ${0.6 - Math.abs(i - numLines/2) * 0.04})`;
+                ctx.lineWidth = 1.5;
                 ctx.beginPath();
-                let started = false;
 
-                for (let x = 0; x < canvas.width; x += 3) {
-                    for (let y = 0; y < canvas.height; y += 3) {
-                        const height = noise(x, y, time);
-                        
-                        if (Math.abs(height - elevation) < 5) {
-                            if (!started) {
-                                ctx.moveTo(x, y);
-                                started = true;
-                            } else {
-                                ctx.lineTo(x, y);
-                            }
-                        }
+                for (let x = 0; x <= canvas.width; x += 3) {
+                    const offset = noise(x, baseY) * 30;
+                    const y = baseY + offset;
+                    
+                    if (x === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
                     }
                 }
-                
+
                 ctx.stroke();
             }
 
-            time += 1;
+            time += 0.01;
             requestAnimationFrame(drawTopography);
         }
 
