@@ -92,3 +92,18 @@ button {
     align-items: center;
     padding-bottom: 100px;
 }
+
+@media (max-width: 768px) {
+  .Experiences {
+    width: 100%;
+    padding: 0 20px 80px;
+    margin-top: 140px;
+    box-sizing: border-box;
+  }
+
+  .box {
+    width: 100%;
+    padding: 0 4px;
+  }
+}
+
