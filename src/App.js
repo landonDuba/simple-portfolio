@@ -17,10 +17,10 @@ function App() {
   }, [theme]);
 
   const exps = [
-    {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxryUOrLyJrZIC2BLcJMx9OdoQPC3vEQqrkw&s', name: "IBM", title: 'Software Engineering Intern', date: 'May 2026 - Aug. 2026'},
-    {img: 'https://pbs.twimg.com/profile_images/1414735088621813760/3NZOfCUw_400x400.png', name: "Scale AI", title: 'GenAI - Technical Advisor Intern', date: 'Oct. 2025 - May 2026'},
-    {img: 'https://www.hstoday.us/wp-content/uploads/2019/09/mantech.jpg', name: "ManTech", title: 'Software Engineering Intern', date: 'Dec. 2024 - Mar. 2025'},
-    {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8LrCGpehZ9ga1kHGwL7quOAMGAyigDWEjPw&s', name: "Virginia Tech", title: 'BS in Computer Science', date: 'Aug. 2023 - Dec. 2026'},
+    {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxryUOrLyJrZIC2BLcJMx9OdoQPC3vEQqrkw&s', name: "ibm", title: 'software engineer intern', date: 'may 2026 - aug. 2026'},
+    {img: 'https://pbs.twimg.com/profile_images/1414735088621813760/3NZOfCUw_400x400.png', name: "scale ai", title: 'gen ai - technical advisor', date: 'oct. 2025 - may 2026'},
+    {img: 'https://www.hstoday.us/wp-content/uploads/2019/09/mantech.jpg', name: "mantech", title: 'software engineer intern', date: 'dec. 2024 - mar. 2025'},
+    {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8LrCGpehZ9ga1kHGwL7quOAMGAyigDWEjPw&s', name: "virginia tech", title: 'b.s. in computer science', date: 'aug. 2023 - dec. 2026'},
   ]
 
   return (
@@ -33,12 +33,12 @@ function App() {
       </div>
       <div className="About">
           <span className='pfp'><img src="/pfp.jpg" alt="face"></img></span>
-          <h2>Hi, I'm Landon</h2>
+          <h2>hi, i'm landon</h2>
           <div className="desc">
-          <p>I'm a junior at Virginia Tech studying Computer Science.</p>
+          <p>i'm a junior at Virginia Tech studying computer science.</p>
           <p>
-            I'm interested in infrastructure, distributed systems, and full-stack development.
-            In my free time I enjoy playing basketball, watching sports, and reading.
+            i'm interested in infrastructure, distributed systems, and full-stack development.
+            in my free time I enjoy playing basketball, watching sports, and reading.
           </p>
             <div className='links'>
               <a href="https://github.com/landonDuba" target="_blank" rel="noreferrer">
@@ -54,7 +54,7 @@ function App() {
           </div>
       </div>
       <div className='Experiences'>
-        <h1>Experiences</h1>
+        <h1>experiences</h1>
         {exps.map((curr_exp) => (
           <Experience exp={curr_exp}/>
         ))}

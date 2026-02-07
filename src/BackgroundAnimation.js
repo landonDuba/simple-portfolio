@@ -10,68 +10,55 @@ export function BackgroundAnimation() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const particles = [];
-        const particleCount = 50;
+        // Noise function for organic terrain
+        const noise = (x, y, time) => {
+            const scale = 0.003;
+            return Math.sin(x * scale + time * 0.0002) * 
+                   Math.cos(y * scale + time * 0.0003) * 
+                   Math.sin((x + y) * scale * 0.5 + time * 0.0001) * 150;
+        };
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2 + 1;
-            }
+        let time = 0;
 
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
+        function drawTopography() {
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
+            const spacing = 40; // Distance between contour lines
+            const levels = 15; // Number of elevation levels
 
-            draw() {
-                ctx.fillStyle = 'rgba(150, 150, 150, 0.5)';
+            ctx.strokeStyle = 'rgba(80, 80, 80, 0.3)';
+            ctx.lineWidth = 1.5;
+
+            for (let level = 0; level < levels; level++) {
+                const elevation = level * spacing;
+                
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
+                let started = false;
 
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-
-            // Draw connections
-            particles.forEach((p1, i) => {
-                particles.slice(i + 1).forEach(p2 => {
-                    const dx = p1.x - p2.x;
-                    const dy = p1.y - p2.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 150) {
-                        ctx.strokeStyle = `rgba(150, 150, 150, ${1 - distance / 150})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(p1.x, p1.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
+                for (let x = 0; x < canvas.width; x += 3) {
+                    for (let y = 0; y < canvas.height; y += 3) {
+                        const height = noise(x, y, time);
+                        
+                        if (Math.abs(height - elevation) < 5) {
+                            if (!started) {
+                                ctx.moveTo(x, y);
+                                started = true;
+                            } else {
+                                ctx.lineTo(x, y);
+                            }
+                        }
                     }
-                });
-            });
+                }
+                
+                ctx.stroke();
+            }
 
-            requestAnimationFrame(animate);
+            time += 1;
+            requestAnimationFrame(drawTopography);
         }
 
-        animate();
+        drawTopography();
 
         const handleResize = () => {
             canvas.width = window.innerWidth;
