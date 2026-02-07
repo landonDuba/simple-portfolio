@@ -7,6 +7,7 @@ export function Experience( {exp} ) {
             <div className='info'>
                 <h3>{exp.name}</h3>
                 <h5>{exp.title}</h5>
+                <span className='date'><h5>{exp.date}</h5></span>
             </div>
         </div>
     )

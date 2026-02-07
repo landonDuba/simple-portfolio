@@ -16,7 +16,10 @@ function App() {
   }, [theme]);
 
   const exps = [
-    {img: 'https://newsroom.ibm.com/image/IBM+Logo_Social.jpg', name: "IBM", title: 'Software Engineer Intern'}
+    {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxryUOrLyJrZIC2BLcJMx9OdoQPC3vEQqrkw&s', name: "IBM", title: 'Software Engineering Intern', date: 'May 2026 - Aug. 2026'},
+    {img: 'https://pbs.twimg.com/profile_images/1414735088621813760/3NZOfCUw_400x400.png', name: "Scale AI", title: 'GenAI - Technical Advisor Intern', date: 'Oct. 2025 - May 2026'},
+    {img: 'https://www.hstoday.us/wp-content/uploads/2019/09/mantech.jpg', name: "ManTech", title: 'Software Engineering Intern', date: 'Dec. 2024 - Mar. 2025'},
+    {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8LrCGpehZ9ga1kHGwL7quOAMGAyigDWEjPw&s', name: "Virginia Tech", title: 'BS in Computer Science', date: 'Aug. 2023 - Dec. 2026'},
   ]
 
   return (
@@ -39,10 +42,10 @@ function App() {
               <a href="https://github.com/landonDuba" target="_blank" rel="noreferrer">
                 <FaGithub />
               </a>
-              <a href="https://github.com/landonDuba" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/landonduba/" target="_blank" rel="noreferrer">
                 <FaLinkedin />
               </a>
-              <a href="https://github.com/landonDuba" target="_blank" rel="noreferrer">
+              <a href="mailto:landonduba@vt.edu" target="_blank" rel="noreferrer">
                 <MdEmail />
               </a>
             </div>
@@ -50,7 +53,9 @@ function App() {
       </div>
       <div className='Experiences'>
         <h1>Experiences</h1>
-        <Experience exp={exps[0]}></Experience>
+        {exps.map((curr_exp) => (
+          <Experience exp={curr_exp}/>
+        ))}
       </div>
     </div>
   );

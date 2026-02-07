@@ -1,12 +1,56 @@
 .box img {
- width: clamp(60px, 12vw, 130px);
- border-radius: 10%;
- height: 10vh;
- width: 10vw;
- padding-right: 10px;
+    border-radius: 10%;
+    height: 6vh;
+    width: 6vh;
+    margin-right: 20px;
+    object-fit: contain;
+    object-position: center;
+    flex-shrink: 0;
 }
 
 .box {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--ptwo);
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.info h3 {
+    margin: 0;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    transition: 0.5s ease;
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.info h5 {
+    margin: 0;
+    padding: 0;
+    font-size: clamp(14px, 2.5vw, 15px);
+    flex: 1;
+}
+
+.info h3:hover {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+}
+
+.date {
+    color: var(--ptwo);
+    flex-shrink: 0;
+    margin-left: auto;
 }
