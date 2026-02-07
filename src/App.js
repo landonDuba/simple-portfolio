@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { FaGithub, FaLinkedin, FaMoon } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { Experience } from './Experience';
+import { BackgroundAnimation } from './BackgroundAnimation';
 
 function App() {
   const [theme, setTheme] = useState(0);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <BackgroundAnimation />
       <div className='Header'>
         <button onClick={toggleTheme}>
           <FaMoon></FaMoon>
