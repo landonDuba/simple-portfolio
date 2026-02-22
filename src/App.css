@@ -67,6 +67,11 @@ body {
   object-fit: cover;
   object-position: center 30%;
   border: 2px solid grey;
+  transition: transform 0.6s ease;
+}
+
+.pfp img:hover {
+  transform: rotate(360deg);
 }
 
 button {
@@ -154,4 +159,20 @@ button:hover {
 
 .darrow {
   animation: bounce 1.5s ease-in-out infinite;
+}
+
+.darrow:hover {
+  animation: 
+    bounce 1.5s ease-in-out infinite,
+    rainbow .5s linear infinite;
+}
+
+@keyframes rainbow {
+  0%   { color: rgb(200, 91, 91); }
+  16%  { color: orange; }
+  33%  { color: yellow; }
+  50%  { color: rgb(78, 167, 78); }
+  66%  { color: rgb(68, 110, 201); }
+  83%  { color: rgb(110, 63, 144); }
+  100% { color: violet; }
 }
