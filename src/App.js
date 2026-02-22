@@ -1,6 +1,6 @@
 import './App.css';
 // import { useState, useEffect } from 'react';
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaArrowDown } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { Experience } from './Experience';
 import { BackgroundAnimation } from './BackgroundAnimation';
@@ -54,6 +54,9 @@ function App() {
               <a href="mailto:landonduba@vt.edu" target="_blank" rel="noreferrer">
                 <MdEmail />
               </a>
+            </div>
+            <div className="darrow">
+              <FaArrowDown/>
             </div>
           </div>
       </div>
