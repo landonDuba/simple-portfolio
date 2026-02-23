@@ -1,2 +1,2 @@
 My updated portfolio website.
-View it at https://simple-portfolio-xi-inky.vercel.app/
+View it at landonduba.vercel.app/
