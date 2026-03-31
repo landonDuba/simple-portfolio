@@ -20,9 +20,10 @@ function App() {
   */
 
   const exps = [
-    {img: 'https://pbs.twimg.com/profile_images/1414735088621813760/3NZOfCUw_400x400.png', name: "scale ai", title: 'gen ai - technical advisor', date: 'oct. 2025 - may 2026', color: 'pink'},
+    {img: 'https://s3-symbol-logo.tradingview.com/amazon--600.png', name: "amazon", title: 'software engineer intern', date: 'jun. 2026 - aug. 2026', color: 'orange'},
+    {img: 'https://pbs.twimg.com/profile_images/1414735088621813760/3NZOfCUw_400x400.png', name: "scale ai", title: 'gen ai - technical advisor', date: 'oct. 2025 - may 2026', color: 'teal'},
     {img: 'https://www.hstoday.us/wp-content/uploads/2019/09/mantech.jpg', name: "mantech", title: 'software engineer intern', date: 'dec. 2024 - mar. 2025', color: 'red'},
-    {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8LrCGpehZ9ga1kHGwL7quOAMGAyigDWEjPw&s', name: "virginia tech", title: 'b.s. in computer science', date: 'aug. 2023 - dec. 2026', color: 'orange'},
+    {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8LrCGpehZ9ga1kHGwL7quOAMGAyigDWEjPw&s', name: "virginia tech", title: 'b.s. in computer science', date: 'aug. 2023 - dec. 2026', color: 'maroon'},
   ]
 
   return (
